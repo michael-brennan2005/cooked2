@@ -24,6 +24,7 @@ func main() {
 		log.Fatal(err)
 	}
 
+	fmt.Printf("%s", settings)
 	db := postgres.New(settings.Postgres)
 	app := server.InitApp(server.Params{Storage: db})
 

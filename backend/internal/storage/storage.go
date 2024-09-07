@@ -7,4 +7,5 @@ type Storage interface {
 	Ping() error
 
 	GetRecipes() ([]types.Recipe, error)
+	CreateRecipe(recipe types.Recipe) (types.Recipe, error)
 }
