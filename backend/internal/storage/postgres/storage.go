@@ -4,6 +4,7 @@ import (
 	"log/slog"
 
 	"github.com/GenerateNU/cooked/backend/internal/settings"
+	"github.com/GenerateNU/cooked/backend/internal/types"
 	"github.com/jmoiron/sqlx"
 )
 
@@ -22,3 +23,12 @@ func (db *DB) Ping() error {
 }
 
 // TODO: implement the necessary queries to satisfy the storage.Storage interface
+
+func (db *DB) GetRecipes() ([]types.Recipe, error) {
+	var recipes []types.Recipe 
+	err := db.Select(&recipes, "SELECT * FROM recipes")
+	if err != nil {
+		return nil, err 
+	}
+	return recipes, nil
+}
